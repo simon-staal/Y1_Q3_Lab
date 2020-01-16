@@ -10,3 +10,5 @@ g++ spiral.cpp -o ./spiral
 
 diff house.gov.svg house.ref.svg
 diff spiral.gov.svg spiral.gov.svg
+
+echo "Success"
