@@ -38,10 +38,6 @@ int main(int argc, char **argv)
     }
 
     // Note: this is very naughty, but if we only have structures we can't stop the user doing it.
-    d.min_x=-1.0;
-    d.min_y=-1.0;
-    d.max_x=1.0;
-    d.max_y=1.0;
 
     float PI2=6.2831853f;
 

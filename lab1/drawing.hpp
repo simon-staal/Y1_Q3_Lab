@@ -18,12 +18,13 @@ struct Polygon
     vector<float> y;
 };
 
-struct Drawing
+class Drawing
 {
+private:
     float min_x, max_x;
     float min_y, max_y;
     vector<Polygon> shapes;
-
+public:
     /* Construct a new drawing. */
     Drawing()
     {
