@@ -1,4 +1,5 @@
 #include "rover.hpp"
+#include "rover_svg_writer.hpp"
 
 #include <cmath>
 #include <random>
@@ -13,8 +14,8 @@ int main(int argc, const char **argv)
     normal_distribution<> normal_dist(0,0.04);
 
     float PI=3.14159265;
-
-    Rover r;
+    RoverSVGWriter concrete_r;
+    Rover &r = concrete_r;
 
     r.set_pen_down(true);
 
