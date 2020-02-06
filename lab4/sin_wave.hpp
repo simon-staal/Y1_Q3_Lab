@@ -26,7 +26,7 @@ public:
 
     virtual float evaluate(float t) const override
     {
-        return m_amplitude*sin(m_frequency*t - m_phase);
+        return (m_amplitude*sin(m_frequency*t - m_phase));
     }
 };
 

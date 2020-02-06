@@ -43,9 +43,9 @@ public:
       cout<<"<svg xmlns='http://www.w3.org/2000/svg' "; // height='256' width='256'"<<endl;
       cout<<"  viewBox='"<<x_min<<" "<<y_min<<" "<<width<<" "<<height<<"' >" << endl;
         t=m_t0;
-        while(t<m_t1){
-          cout << "  <line x1 = '"<<t<<"' y1 = '"<<wave->evaluate(t)<<"' x2 = '"<<t+m_dt<<"' y2 = '"<<wave->evaluate(t+m_dt)<<"' stroke = 'black' stroke-width = '"<<0.01<<"'/>" << endl;
-            t += m_dt;
+        for(int i = 0; i<y.size(); i++){
+          cout << "  <line x1 = '"<<t<<"' y1 = '"<<y[i]<<"' x2 = '"<<t+m_dt<<"' y2 = '"<<y[i+1]<<"' stroke = 'black' stroke-width = '"<<0.01<<"'/>" << endl;
+          t += m_dt;
         }
         cout<<"</svg>"<<endl;
     }
