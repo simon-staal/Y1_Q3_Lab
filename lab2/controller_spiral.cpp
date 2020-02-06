@@ -1,7 +1,5 @@
 #include "rover.hpp"
 
-#include "rover_svg_writer.hpp"
-
 #include <cmath>
 
 int main(int argc, const char **argv)
