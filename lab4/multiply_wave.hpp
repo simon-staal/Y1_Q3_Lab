@@ -1,5 +1,5 @@
-#ifndef sum_wave_hpp
-#define sum_wave_hpp
+#ifndef multiply_wave_hpp
+#define multiply_wave_hpp
 
 #include "wave.hpp"
 
@@ -11,14 +11,14 @@
 #include <vector>
 #include <string>
 
-class SumWave
+class MlpWave
     : public Wave
 {
 private:
     const Wave *m_wave1;
     const Wave *m_wave2;
 public:
-    SumWave(const factory_parameters &params)
+    MlpWave(const factory_parameters &params)
     {
         if(params.args.size()!=2){
             cerr<<"SumWave need two arguments"<<endl;
@@ -27,7 +27,7 @@ public:
         m_wave2=wave_factory(params.args[1]);
     }
 
-    ~SumWave()
+    ~MlpWave()
     {
         delete m_wave1;
         delete m_wave2;

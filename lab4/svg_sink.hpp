@@ -1,6 +1,7 @@
 #ifndef svg_sink_hpp
 #define svg_sink_hpp
 
+#include <algorithm>
 #include "sink.hpp"
 
 #include "factory_parameters.hpp"
@@ -25,14 +26,28 @@ public:
 
     void output(const Wave *wave) const
     {
+      float t=m_t0;
+      vector<float> y;
+      while(t<m_t1){
+        y.push_back(wave->evaluate(t));
+        t += m_dt;
+      }
+      float min = *min_element(y.begin(), y.end());
+      float max = *max_element(y.begin(), y.end());
+      float k = 1.25;
+      float width = k*(m_t1 - m_t0);
+      float height = k*(max - min);
+      float x_min = m_t0 - 0.5*(width - (m_t1 - m_t0));
+      float y_min = min - 0.5*(height - (max - min));
       cout<<"<?xml version='1.0' encoding='UTF-8'?>"<<endl;
       cout<<"<svg xmlns='http://www.w3.org/2000/svg' "; // height='256' width='256'"<<endl;
-      cout<<"  viewBox='-1.1 -1.1 2.2 2.2' >" << endl;
-        float t=m_t0;
+      cout<<"  viewBox='"<<x_min<<" "<<y_min<<" "<<width<<" "<<height<<"' >" << endl;
+        t=m_t0;
         while(t<m_t1){
-          cout << "  <line x1 = '"<<t<<"' y1 = '"<<wave->evaluate(t)<<"' x2 = '"<<t+m_dt<<"' y2 = '"<<wave->evaluate(t+m_dt)<<"' stroke = 'black' stroke-width = '"<<0.001<<"'/>" << endl;
+          cout << "  <line x1 = '"<<t<<"' y1 = '"<<wave->evaluate(t)<<"' x2 = '"<<t+m_dt<<"' y2 = '"<<wave->evaluate(t+m_dt)<<"' stroke = 'black' stroke-width = '"<<0.01<<"'/>" << endl;
             t += m_dt;
         }
+        cout<<"</svg>"<<endl;
     }
 };
 
