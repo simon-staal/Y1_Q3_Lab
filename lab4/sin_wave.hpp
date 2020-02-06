@@ -21,7 +21,7 @@ public:
     {
         m_frequency=params.get_float_arg(0, 1.0);
         m_amplitude=params.get_float_arg(1, 1.0);
-        m_phase=params.get_float_arg(1, 0.0);
+        m_phase=params.get_float_arg(2, 0.0);
     }
 
     virtual float evaluate(float t) const override
